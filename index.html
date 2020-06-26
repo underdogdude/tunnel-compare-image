@@ -150,10 +150,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+
 <script>
 
     $(document).ready(function () {
-        init();
+        // init();
     });
 
     var global_width;
@@ -230,62 +232,71 @@
         accessZone: function() { 
             $(elem).empty();
             $(elem).append(`
-                    <img src="./images/1-Nighttime.png">
+                    <img src="./images/1-Nighttime.png" onload="init()">
                     <div class="resize">
-                        <img src="./images/1-Daytime.png">
+                        <img src="./images/1-Daytime.png" onload="init()">
                     </div>
                     <span class="handle"></span>
                 `
             );
-            init2();
+            // init2();
             
         },
         thresholdZone: function() { 
             $(elem).empty();
             $(elem).html(`
-                    <img src="./images/2-Nighttime.png">
+                    <img src="./images/2-Nighttime.png" onload="init()">
                     <div class="resize">
-                        <img src="./images/2-Daytime.png">
+                        <img src="./images/2-Daytime.png" onload="init()">
                     </div>
                     <span class="handle"></span>`
             );
-            init2();
+            // init2();
             
         },
         interiorZone: function() { 
             $(elem).empty();
             $(elem).append(`
-                    <img src="./images/3-Nighttime.png">
+                    <img src="./images/3-Nighttime.png" onload="init()">
                     <div class="resize">
-                        <img src="./images/3-Daytime.png">
+                        <img src="./images/3-Daytime.png" onload="init()">
                     </div>
                     <span class="handle"></span>`
             );
-            init2();
+            // init2();
         },
         exitZone: function() { 
             $(elem).empty();
             $(elem).append(`
-                    <img src="./images/4-Nighttime.png">
+                    <img src="./images/4-Nighttime.png" onload="init()">
                     <div class="resize">
-                        <img src="./images/4-Daytime.png">
+                        <img src="./images/4-Daytime.png" onload="init()">
                     </div>
                     <span class="handle"></span>`
             );
-            init2();
+            // init2();
         },
         conjunctionZone: function() { 
             $(elem).empty();
             $(elem).append(`
-                    <img src="./images/5-Nighttime.png">
+                    <img src="./images/5-Nighttime.png" onload="init()">
                     <div class="resize">
-                        <img src="./images/5-Daytime.png">
+                        <img src="./images/5-Daytime.png" onload="init()">
                     </div>
                     <span class="handle"></span>`
             );
-            init2();
+            // init2();
         }
     }
+
+    $("img").on("load", function() {
+    //do stuff
+        console.log(this);
+        init();
+    }).each(function() {
+        if(this.complete || /*for IE 10-*/ $(this).height() > 0)
+            $(this).load();
+    });
 </script>
 
 </html>
